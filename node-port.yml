@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask-app-service
+spec:
+  selector:
+    app: flask-app  # Ensure this matches the label in your Deployment
+  ports:
+    - protocol: TCP
+      port: 5000         # Service will listen on port 5000
+      targetPort: 5000   # Target port on the Flask app container
+      nodePort: 30010    # Expose the service on node port 30000 (change as needed)
+  type: NodePort         # Exposes the service externally via a NodePort
+
